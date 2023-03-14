@@ -1,1 +1,1 @@
-console.log("working");
+require("./db/db")
