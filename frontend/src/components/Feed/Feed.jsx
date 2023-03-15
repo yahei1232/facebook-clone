@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Feed.css'
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import AddReactionIcon from '@mui/icons-material/AddReaction';
+import FeedModle from '../Modle/FeedModle';
 
 function Feed() {
+    const [modalOpened, setModalOpened] = useState(false);
     return (
         <div className='Feed'>
             <div className="photo-share">
                 <img src='https://3.bp.blogspot.com/-p4B9iu_UAy8/U27vcaLiAMI/AAAAAAAALk4/Hze2XmyXH8g/s1600/249306-ster298qx_super.jpg' alt="" width='40px' />
-                <input type="text" placeholder='write what you are thinking here' />
+                <input onClick={() => setModalOpened(true)} type="text" placeholder='write what you are thinking here' />
             </div>
             <hr />
             <div className="live-photo-feel">
@@ -26,6 +28,10 @@ function Feed() {
                     <h4>Feeling/action</h4>
                 </div>
             </div>
+            <FeedModle
+                modalOpened={modalOpened}
+                setModalOpened={setModalOpened}
+            />
         </div>
     )
 }
