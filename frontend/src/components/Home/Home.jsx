@@ -1,5 +1,6 @@
 import React from 'react'
 import LeftSide from '../LeftSide/LeftSide'
+import RightSide from '../RightSide/RightSide'
 
 const Home = () => {
 
@@ -7,6 +8,7 @@ const Home = () => {
         <div className='Home'>
             <div className="all-section">
                 <LeftSide />
+                <RightSide />
             </div>
         </div>
     )

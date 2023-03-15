@@ -1,0 +1,50 @@
+.RightSide {
+    flex: 3;
+
+    height: calc(100vh - 50px);
+    overflow-y: scroll;
+    position: sticky;
+    top: 50px;
+
+}
+
+.RightSide .concat {
+    margin-left: 0.5rem;
+    margin-top: 0.3rem;
+}
+
+.RightSide .concat .head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 .3rem;
+}
+
+.RightSide .prof-photo {
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.RightSide .prof-photo img {
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.RightSide .prof-photo h2 {
+    margin-left: 0.5rem;
+}
+
+.RightSide hr {
+    color: rgb(255, 255, 255);
+    margin: 0 auto;
+    width: 90%;
+}
+
+.RightSide .prof-photo .added {
+    border: 1px solid black;
+    font-size: 2rem;
+    border-radius: 50%;
+    background-color: rgb(228, 228, 228);
+    cursor: pointer;
+}
