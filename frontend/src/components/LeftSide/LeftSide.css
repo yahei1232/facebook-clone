@@ -1,0 +1,28 @@
+.LeftSide {
+    flex: 3;
+
+    height: calc(100vh - 50px);
+    overflow-y: scroll;
+    position: sticky;
+    top: 50px;
+}
+
+.LeftSide .prof-photo {
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.LeftSide .prof-photo img {
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.LeftSide .prof-photo .icons {
+    width: 40px;
+}
+
+.LeftSide .prof-photo h2 {
+    margin-left: 0.5rem;
+    font-size: 1rem;
+}
