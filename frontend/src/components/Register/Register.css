@@ -1,0 +1,114 @@
+form .container {
+    margin: 0 auto;
+    width: 400px;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+form .container .form {
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+form .container .facebook {
+    color: rgb(68, 68, 244);
+    font-size: 50px;
+}
+
+form .container .hed {
+    font-size: 23px;
+}
+
+form .container .hed h3 {
+    margin: 1rem;
+}
+
+form .container .hed h5 {
+    margin: 0.5rem;
+    color: rgb(108, 108, 108);
+}
+
+form .container hr {
+    color: rgb(255, 255, 255);
+    margin: 1rem 0;
+}
+
+/* form .container .reg {} */
+
+form .container .reg .name {
+    margin: 1rem 0;
+}
+
+form .container .reg .name .first-name {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid rgb(188, 188, 188);
+    margin-right: 0.3rem;
+    width: 44%;
+}
+
+form .container .reg .name .sur-name {
+    padding: 0.5rem;
+    margin-left: 0.3rem;
+    border-radius: 5px;
+    border: 1px solid rgb(188, 188, 188);
+    width: 44%;
+}
+
+form .container .reg .phon-email {
+    padding: 0.5rem;
+    border: 1px solid rgb(188, 188, 188);
+    width: 90%;
+    border-radius: 5px;
+    margin-bottom: 0.3rem;
+}
+
+form .container .reg .password {
+    padding: 0.5rem;
+    border: 1px solid rgb(188, 188, 188);
+    width: 90%;
+    border-radius: 5px;
+    margin-top: 0.3rem;
+}
+
+form .container .reg .date {
+    width: 90%;
+    padding: 0.5rem;
+    border: 1px solid rgb(188, 188, 188);
+    border-radius: 5px;
+}
+
+form .container .reg .gender {
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+}
+
+form .container .reg .gender label {
+    margin-right: 0.5rem;
+}
+
+form .container .reg .gender input {
+    margin-right: 0.3rem;
+}
+
+form .container .reg .dep {
+    color: rgb(147, 147, 147);
+    font-size: 12px;
+    margin: 1rem;
+    width: 90%;
+
+}
+
+form .container .reg .submit {
+    margin: 0.5rem;
+    font-size: 20px;
+    background-color: rgb(25, 164, 25);
+    border: 1px solid green;
+    padding: 0.3rem 4rem;
+    border-radius: 5px;
+    color: aliceblue;
+}
