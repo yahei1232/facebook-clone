@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require('cors');
 
 const usertRouter = require("./routers/routes/user");
+const loginRouter = require("./routers/routes/login");
 
 require("./db/db")
 
@@ -11,6 +12,7 @@ app.use(express.json());
 
 const port = 5000;
 
+app.use(loginRouter);
 app.use("/user", usertRouter);
 
 app.listen(port, () => {
