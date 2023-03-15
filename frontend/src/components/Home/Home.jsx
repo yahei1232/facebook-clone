@@ -2,6 +2,7 @@ import React from 'react'
 import Feed from '../Feed/Feed'
 import LeftSide from '../LeftSide/LeftSide'
 import RightSide from '../RightSide/RightSide'
+import './Home.css'
 
 const Home = () => {
 
@@ -9,7 +10,9 @@ const Home = () => {
         <div className='Home'>
             <div className="all-section">
                 <LeftSide />
-                <Feed />
+                <div className="feed-post">
+                    <Feed />
+                </div>
                 <RightSide />
             </div>
         </div>

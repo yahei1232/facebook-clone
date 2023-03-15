@@ -1,0 +1,11 @@
+.all-section {
+    display: flex;
+    gap: 5px;
+}
+
+.feed-post {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 6;
+}
