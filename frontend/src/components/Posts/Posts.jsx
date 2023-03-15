@@ -5,6 +5,8 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import ReplyIcon from '@mui/icons-material/Reply';
+import Comments from './Comments/Comments';
+
 function Posts() {
 
     return (
@@ -49,6 +51,8 @@ function Posts() {
                         <button className='share'>share</button>
                     </div>
                 </div>
+                <hr />
+                <Comments />
             </div>
         </div >
     )
