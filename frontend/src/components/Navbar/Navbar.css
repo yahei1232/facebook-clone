@@ -1,0 +1,50 @@
+.cont {
+    display: flex;
+    width: 95%;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 50px;
+    width: 100%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+
+}
+
+.cont .logo-search {
+    display: flex;
+}
+
+.cont .logo-search h1 {
+    border: 1px solid blue;
+    padding: 0.3rem 1rem;
+    margin-right: 0.3rem;
+    border-radius: 50%;
+    background-color: blue;
+    color: white;
+}
+
+.cont .logo-search .search {
+    border-radius: 50px;
+    font-size: 1rem;
+    padding: 0 0 0 1rem;
+    border: none;
+    background-color: aliceblue;
+}
+
+.cont .nac-conp .icon {
+    margin: 0 2rem 0 3rem;
+}
+
+.cont .men-mess-not-profile {
+    margin: 0 2rem 0 3rem;
+}
+
+.cont .men-mess-not-profile .show {
+    margin: 0 1rem;
+
+}
