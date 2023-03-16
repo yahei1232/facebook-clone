@@ -28,22 +28,17 @@ const Home = () => {
             }).catch((err) => {
                 console.log(err);
             })
-        // console.log(res);
     }
     useEffect(() => {
         fetchPost()
     }, [])
-
-    // console.log(post?.posts);
-    // console.log(post?.friends);
-
 
     return (
         <div className='Home'>
             <div className="all-section">
                 <LeftSide />
                 <div className="feed-post">
-                    <Feed />
+                    <Feed fetchPost={fetchPost} />
                     <Posts />
                 </div>
                 <RightSide />

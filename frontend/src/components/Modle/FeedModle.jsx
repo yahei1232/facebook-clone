@@ -5,14 +5,33 @@ import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import AddReactionIcon from '@mui/icons-material/AddReaction';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import FlagIcon from '@mui/icons-material/Flag';
+import axios from "axios";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 
-function FeedModle({ modalOpened, setModalOpened }) {
+function FeedModle({ modalOpened, setModalOpened, fetchPost }) {
+    const tok = useSelector(state => state?.user?.currentUser?.token)
 
     const theme = useMantineTheme();
 
+    const [descriptn, setDescriptn] = useState("");
+
     const handlepost = async (e) => {
         e.preventDefault()
-        setModalOpened(false)
+
+        try {
+            await axios.post("/post/createPosts", {
+                descriptn,
+            }, {
+                headers: {
+                    Authorization: `Bearer ${tok}`,
+                },
+            })
+            setModalOpened(false)
+            fetchPost()
+        } catch (error) {
+            console.log(error);
+        }
     }
     return (
         <Modal
@@ -37,7 +56,7 @@ function FeedModle({ modalOpened, setModalOpened }) {
                     <h3 className="name">Yahya</h3>
                 </div>
 
-                <textarea className="descriptn" name="" id="" cols="30" rows="10" placeholder={`What's in your mind, Yahya`} ></textarea>
+                <textarea className="descriptn" name="" id="" cols="30" rows="10" placeholder={`What's in your mind, Yahya`} onChange={(e) => setDescriptn(e.target.value)}></textarea>
 
                 <div className="text-photo-emoje-flat-more">
 
