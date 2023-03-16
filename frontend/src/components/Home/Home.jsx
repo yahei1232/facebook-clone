@@ -12,9 +12,6 @@ const Home = () => {
     const [post, setPost] = useState([]);
     const tok = useSelector(state => state?.user?.currentUser?.token)
 
-    console.log(post);
-    console.log(tok);
-
     const fetchPost = async () => {
         return await axios.get(`/user/getMyAndFriendPosts`,
             {
@@ -39,7 +36,7 @@ const Home = () => {
                 <LeftSide />
                 <div className="feed-post">
                     <Feed fetchPost={fetchPost} />
-                    <Posts />
+                    <Posts userPosts={post?.posts} friendsPosts={post?.friends} fetchPost={fetchPost} />
                 </div>
                 <RightSide />
             </div>
