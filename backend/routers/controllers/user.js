@@ -25,6 +25,7 @@ const getMyAndFriendPosts = async (req, res) => {
             .sort({ createdAt: -1 })
             .populate({ path: "posts followers" })
             .exec(async (err, result1) => {
+                console.log(result1);
                 await userModle.populate(
                     result1,
                     "posts.commentId posts.userId followers.posts",
