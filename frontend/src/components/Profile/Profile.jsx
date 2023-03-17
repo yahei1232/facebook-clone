@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import jwt_decode from "jwt-decode";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import FriendSlides from './FriendSlides/FriendSlides';
 
 function Profile() {
 
@@ -61,6 +62,7 @@ function Profile() {
                     </div>
                 </div>
             </div>
+            <FriendSlides />
             <div className="intro-feed-post">
                 <div className="left-profile">
                     <div className="intro-live-from-inrela-following">
