@@ -1,7 +1,11 @@
 const router = require("express").Router()
-const { createPost } = require("../controllers/post")
+const {
+    createPost,
+    likePost,
+} = require("../controllers/post")
 const authentacion = require('../middlewares/authentacion')
 
-router.post("/createPosts", authentacion, createPost)  //http://localhost:5000/post/createPosts
+router.post("/createPosts", authentacion, createPost)
+router.put("/likePost/:id", authentacion, likePost)
 
 module.exports = router

@@ -16,4 +16,22 @@ let createPost = async (req, res) => {
         })
 }
 
-module.exports = { createPost }
+const likePost = async (req, res) => {
+    try {
+        const post = await postModle.findById(req.params.id);
+        if (!post.likes.includes(req.token.userId)) {
+            let result = await post.updateOne({ $push: { likes: req.token.userId } });
+            res.status(200).json(result);
+        } else {
+            await post.updateOne({ $pull: { likes: req.token.userId } });
+            res.status(200).json("The post has been disliked");
+        }
+    } catch (err) {
+        res.status(500).json(err);
+    }
+};
+
+module.exports = {
+    createPost,
+    likePost,
+}
