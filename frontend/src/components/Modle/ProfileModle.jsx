@@ -19,7 +19,7 @@ function ProfileModle({ modalOpened, setModalOpened, fetchUser }) {
     const [city, setCity] = useState("");
     const [uploadeImg, setUploadeImg] = useState(null);
 
-    const handlepost = async (e) => {
+    const handleUpdateUser = async (e) => {
         try {
             await axios.put("/user/updateUser", {
                 name,
@@ -83,7 +83,7 @@ function ProfileModle({ modalOpened, setModalOpened, fetchUser }) {
                     </div>
                 </div>
 
-                <button className="PostButton" onClick={handlepost}>Edit</button>
+                <button className="PostButton" onClick={handleUpdateUser}>Edit</button>
             </div>
         </Modal>
     );

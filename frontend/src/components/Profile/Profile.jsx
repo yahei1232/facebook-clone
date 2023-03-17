@@ -12,6 +12,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import FriendSlides from './FriendSlides/FriendSlides';
 import ProfileModle from '../Modle/ProfileModle';
+import FeedProfile from './PostProfile/FeedProfile/FeedProfile';
 
 function Profile() {
 
@@ -134,7 +135,7 @@ function Profile() {
                 </div>
 
                 <div className="right-profile">
-                    <h1>FEED</h1>
+                    <FeedProfile fetchUser={fetchUser} />
                     <h1>POST</h1>
                 </div>
             </div>
