@@ -9,6 +9,7 @@ import { format } from 'timeago.js';
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
 import { useSelector } from "react-redux";
+import CommentsProfile from '../CommentsProfile/CommentsProfile';
 
 function PostProfile({ posts, fetchUser }) {
 
@@ -70,6 +71,7 @@ function PostProfile({ posts, fetchUser }) {
                         </div>
                     </div>
                     <hr />
+                    <CommentsProfile comments={resul.commentId} userrId={resul._id} fetchUser={fetchUser} />
                 </div>
             ))}
         </div >
