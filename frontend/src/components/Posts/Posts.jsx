@@ -66,7 +66,7 @@ function Posts({ userPosts, friendsPosts, fetchPost }) {
 
                     <hr />
 
-                    <Comments />
+                    <Comments commentId={result1?.commentId} postId={result1?._id} fetchPost={fetchPost} />
                 </div>
             ))}
         </div >
