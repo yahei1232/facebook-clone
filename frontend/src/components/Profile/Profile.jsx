@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 import FriendSlides from './FriendSlides/FriendSlides';
 import ProfileModle from '../Modle/ProfileModle';
 import FeedProfile from './PostProfile/FeedProfile/FeedProfile';
+import PostProfile from './PostProfile/PostProfile/PostProfile';
 
 function Profile() {
 
@@ -136,7 +137,7 @@ function Profile() {
 
                 <div className="right-profile">
                     <FeedProfile fetchUser={fetchUser} />
-                    <h1>POST</h1>
+                    <PostProfile posts={user?.posts} fetchUser={fetchUser} />
                 </div>
             </div>
 
