@@ -88,9 +88,19 @@ const getUser = async (req, res) => {
     }
 };
 
+const getSuggrest = async (req, res) => {
+    let userId = req.token.userId;
+    try {
+        const users = await userModle.find({ _id: { $ne: userId } }).limit(8);
+        res.status(200).json(users);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+};
 
 module.exports = {
     requster,
     getMyAndFriendPosts,
-    getUser
+    getUser,
+    getSuggrest,
 };
