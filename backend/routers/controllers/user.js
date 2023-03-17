@@ -98,9 +98,30 @@ const getSuggrest = async (req, res) => {
     }
 };
 
+const updateUser = async (req, res) => {
+    let userId = req.token.userId;
+    try {
+        if (req.body.password) {
+            const salt = await bcrypt.genSalt(10);
+            req.body.password = await bcrypt.hash(req.body.password, salt)
+        }
+        try {
+            const updateUser = await userModle.findByIdAndUpdate(userId, {
+                $set: req.body,
+            }, { new: true })
+            res.status(200).json(updateUser)
+        } catch (error) {
+            res.status(500).json(err);
+        }
+    } catch (err) {
+        res.status(500).json(err);
+    }
+};
+
 module.exports = {
     requster,
     getMyAndFriendPosts,
     getUser,
     getSuggrest,
+    updateUser,
 };

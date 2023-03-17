@@ -11,6 +11,7 @@ import jwt_decode from "jwt-decode";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import FriendSlides from './FriendSlides/FriendSlides';
+import ProfileModle from '../Modle/ProfileModle';
 
 function Profile() {
 
@@ -47,6 +48,11 @@ function Profile() {
                         <div className="name-edit-profile">
                             <h1 className='name'>{user?.name}</h1>
                             <button className='edit-profile' onClick={() => setModalOpened(true)}>Edit profile</button>
+                            <ProfileModle
+                                modalOpened={modalOpened}
+                                setModalOpened={setModalOpened}
+                                fetchUser={fetchUser}
+                            />
                         </div>
                         <img className='person-photo' src={user?.photo} alt="asd" width='150px' />
                     </div>
