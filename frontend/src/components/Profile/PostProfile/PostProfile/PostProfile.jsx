@@ -6,8 +6,31 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import ReplyIcon from '@mui/icons-material/Reply';
 import { format } from 'timeago.js';
+import axios from 'axios';
+import jwt_decode from "jwt-decode";
+import { useSelector } from "react-redux";
 
 function PostProfile({ posts, fetchUser }) {
+
+    const tok = useSelector(state => state.user.currentUser.token)
+    var decoded = jwt_decode(tok);
+
+    const handleLike = async (id) => {
+
+        await axios.put(`/post/likePost/${id}`,
+            { userId: decoded.userId },
+            {
+                headers: {
+                    Authorization: `Bearer ${tok}`,
+                },
+            })
+            .then((res) => {
+                fetchUser()
+            }).catch((err) => {
+                console.log(err);
+            })
+    }
+
     return (
         <div className='PostProfile'>
             {posts && posts?.map((resul, key) => (
@@ -35,7 +58,7 @@ function PostProfile({ posts, fetchUser }) {
                     <div className="like-comment-share">
                         <div className="like-comment-share-edit">
                             <ThumbUpIcon />
-                            <button className='like'>Like</button>
+                            <button className='like' onClick={() => handleLike(resul._id)}>Like</button>
                         </div>
                         <div className="like-comment-share-edit">
                             <ChatBubbleIcon />
