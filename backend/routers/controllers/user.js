@@ -16,39 +16,59 @@ const requster = async (req, res) => {
             res.status(500).json(err);
         });
 };
-
 const getMyAndFriendPosts = async (req, res) => {
     let userId = req.token.userId;
     try {
-        await userModle
+        const user = await userModle.findById(userId).populate({
+            path: "posts",
+            populate: [
+                {
+                    path: "userId",
+                    model: "User",
+                },
+                {
+                    path: "commentId",
+                    populate: {
+                        path: "userId",
+                        model: "User",
+                    },
+                },
+            ],
+        });
+
+        const followers = await userModle
             .findById(userId)
-            .sort({ createdAt: -1 })
-            .populate({ path: "posts followers" })
-            .exec(async (err, result1) => {
-                await userModle.populate(
-                    result1,
-                    "posts.commentId posts.userId followers.posts",
-                    async (err, result2) => {
-                        await userModle.populate(
-                            result2,
-                            "posts.commentId.userId followers.posts.userId followers.posts.commentId",
-                            async (err, result3) => {
-                                await userModle.populate(
-                                    result3,
-                                    "followers.posts.commentId.userId",
-                                    (err, result4) => {
-                                        res.status(200).json(result4);
-                                    }
-                                )
-                            }
-                        );
-                    }
-                );
+            .populate({
+                path: "followers",
+                populate: {
+                    path: "posts",
+                    populate: [
+                        {
+                            path: "userId",
+                            model: "User",
+                        },
+                        {
+                            path: "commentId",
+                            populate: {
+                                path: "userId",
+                                model: "User",
+                            },
+                        },
+                    ],
+                },
             });
+
+        const result = {
+            user,
+            followers,
+        };
+
+        res.status(200).json(result);
     } catch (error) {
         res.status(500).json(error);
     }
 };
+
 
 module.exports = {
     requster,
