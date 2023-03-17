@@ -10,22 +10,24 @@ import axios from 'axios'
 const Home = () => {
 
     const [post, setPost] = useState([]);
+    const [friendsPost, setFriendsPost] = useState([]);
     const tok = useSelector(state => state?.user?.currentUser?.token)
 
     const fetchPost = async () => {
-        return await axios.get(`/user/getMyAndFriendPosts`,
-            {
+        try {
+            const res = await axios.get(`/user/getMyAndFriendPosts`, {
                 headers: {
                     Authorization: `Bearer ${tok}`,
                 },
-            })
-            .then((res) => {
-                console.log(res?.data);
-                setPost(res?.data);
-            }).catch((err) => {
-                console.log(err);
-            })
+            });
+            console.log(res?.data);
+            setPost(res?.data?.user?.posts);
+            setFriendsPost(res?.data?.followers?.map(follower => follower.posts).flat());
+        } catch (err) {
+            console.log(err);
+        }
     }
+
     useEffect(() => {
         fetchPost()
     }, [])
@@ -36,7 +38,7 @@ const Home = () => {
                 <LeftSide />
                 <div className="feed-post">
                     <Feed fetchPost={fetchPost} />
-                    <Posts userPosts={post?.posts} friendsPosts={post?.friends} fetchPost={fetchPost} />
+                    <Posts userPosts={post} friendsPosts={friendsPost} fetchPost={fetchPost} />
                 </div>
                 <RightSide />
             </div>
