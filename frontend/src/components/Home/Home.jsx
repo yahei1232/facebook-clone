@@ -20,9 +20,8 @@ const Home = () => {
                     Authorization: `Bearer ${tok}`,
                 },
             });
-            console.log(res?.data);
             setPost(res?.data?.user?.posts);
-            setFriendsPost(res?.data?.followers?.map(follower => follower.posts).flat());
+            setFriendsPost(res?.data?.followers?.map(follower => follower?.posts).flat());
         } catch (err) {
             console.log(err);
         }

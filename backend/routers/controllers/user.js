@@ -68,9 +68,35 @@ const getMyAndFriendPosts = async (req, res) => {
         res.status(500).json(error);
     }
 };
-
+const getUser = async (req, res) => {
+    try {
+        await userModle
+            .findById(req.params.id)
+            .sort({ createdAt: -1 })
+            .populate('friends')
+            .populate({ path: "posts" })
+            .exec(async (err, result1) => {
+                await userModle.populate(
+                    result1,
+                    "posts.commentId posts.userId",
+                    async (err, result2) => {
+                        await userModle.populate(
+                            result2,
+                            "posts.commentId.userId",
+                            (err, result3) => {
+                                res.status(200).json(result3);
+                            }
+                        );
+                    }
+                );
+            });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+};
 
 module.exports = {
     requster,
-    getMyAndFriendPosts
+    getMyAndFriendPosts,
+    getUser
 };

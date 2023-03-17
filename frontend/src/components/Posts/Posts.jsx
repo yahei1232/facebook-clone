@@ -20,6 +20,7 @@ function Posts({ userPosts, friendsPosts, fetchPost }) {
         }
     }
     const allPost = res?.concat(userPosts)
+    
     return (
         <div className='Posts'>
             {allPost && allPost?.map((result1, key) => (
@@ -28,7 +29,7 @@ function Posts({ userPosts, friendsPosts, fetchPost }) {
                         <div className="img-name">
                             <img src={result1?.userId?.photo} alt="" width={"40px"} />
                             <div className="name-time">
-                                <h3>yahya</h3>
+                                <h3>{result1?.userId?.name}</h3>
                                 <h5>{format(result1?.createdAt)}</h5>
                             </div>
                         </div>
