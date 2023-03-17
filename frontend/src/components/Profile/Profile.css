@@ -1,0 +1,198 @@
+.Profile {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    background-color: #f0f2f5;
+}
+
+.Profile .intro-feed-post .left-profile .intro-live-from-inrela-following {
+
+    border-radius: 7px;
+    padding: 0.6rem;
+    border: 1px solid rgb(221, 221, 221);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    justify-content: center;
+    background-color: white;
+}
+
+.Profile .intro-feed-post .left-profile .intro-live-from-inrela-following div {
+    gap: .3rem;
+    display: flex;
+    font-size: .6rem;
+    align-items: center;
+}
+
+
+.Profile .intro-feed-post .left-profile .photo-all-img {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    border-radius: 7px;
+    padding: 0.6rem;
+    border: 1px solid rgb(221, 221, 221);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    background-color: white;
+}
+
+.Profile .intro-feed-post .left-profile .photo-all-img .photo-all {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.Profile .intro-feed-post .left-profile .photo-all-img .center-photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.Profile .intro-feed-post .left-profile .photo-all-img .center-photo .photo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.Profile .intro-feed-post .left-profile .photo-all-img .center-photo .photo img {
+    border-radius: 8px;
+    width: 128px;
+}
+
+
+.Profile .intro-feed-post .left-profile .text-img-friends {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    border-radius: 7px;
+    padding: 0.6rem;
+    border: 1px solid rgb(221, 221, 221);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    background-color: white;
+}
+
+.Profile .intro-feed-post .left-profile .text-img-friends .text {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Profile .intro-feed-post .left-profile .text-img-friends .center-friends {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Profile .intro-feed-post .left-profile .text-img-friends .center-friends .friends {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.Profile .intro-feed-post .left-profile .text-img-friends .center-friends .friends img {
+    border-radius: 8px;
+    width: 128px;
+}
+
+
+.Profile .background {
+    width: 100%;
+    background-color: white;
+    border: 1px solid rgb(221, 221, 221);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+
+.Profile .background .img-photo-name-edit-name {
+    margin: 0 auto;
+    width: 66%;
+}
+
+.Profile .background .img-photo-name-edit-name .img-photo-edit {
+    position: relative;
+    text-align: center;
+}
+
+.Profile .background .img-photo-name-edit-name .img-photo-edit .edit-cover-photo {
+    position: absolute;
+    bottom: 18px;
+    right: 16px;
+
+    border: none;
+    background-color: aliceblue;
+    padding: .3rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.Profile .background .img-photo-name-edit-name .img-photo-edit .person-photo {
+    cursor: pointer;
+    position: absolute;
+    bottom: -10px;
+    left: 16px;
+    border-radius: 50%;
+    border: 4px solid white;
+}
+
+.Profile .background .img-photo-name-edit-name .name-edit-profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem 0;
+}
+
+.Profile .background .img-photo-name-edit-name .name-edit-profile .name {
+    margin-left: 10rem;
+}
+
+.Profile .background .img-photo-name-edit-name .name-edit-profile .edit-profile {
+    border: none;
+    padding: .3rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.Profile .background .img-photo-name-edit-name .post-about-friend-photo-video-more {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Profile .background .img-photo-name-edit-name .post-about-friend-photo-video-more .post-about-friend-photo-video button {
+    border: none;
+    background-color: white;
+    margin-left: 0.5rem;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.Profile .background .img-photo-name-edit-name .post-about-friend-photo-video-more .more {
+    cursor: pointer;
+    background-color: rgb(224, 224, 224);
+    width: 3rem;
+    height: 2rem;
+    border-radius: 8px;
+}
+
+.Profile .intro-feed-post {
+    display: flex;
+    margin: 0 auto;
+    width: 66%;
+    gap: 1rem;
+}
+
+.Profile .intro-feed-post .left-profile {
+    flex: 6;
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+}
+
+.Profile .intro-feed-post .right-profile {
+    flex: 6;
+}
