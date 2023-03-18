@@ -5,6 +5,7 @@ const usertRouter = require("./routers/routes/user");
 const loginRouter = require("./routers/routes/login");
 const postRouter = require("./routers/routes/post")
 const commentRouter = require("./routers/routes/comment");
+const conversationRouter = require("./routers/routes/conversations");
 
 require("./db/db")
 
@@ -18,6 +19,7 @@ app.use(loginRouter);
 app.use("/user", usertRouter);
 app.use("/post", postRouter);
 app.use("/comment", commentRouter);
+app.use("/conversation", conversationRouter);
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);

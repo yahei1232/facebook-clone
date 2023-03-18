@@ -6,20 +6,32 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import Profile from './components/Profile/Profile';
 import Friends from './components/Friends/Friends';
+import { useSelector } from 'react-redux';
 
 function App() {
+  let token = (useSelector((state) => state?.user?.currentUser?.token));
+
   return (
-    <div className="App">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/friends" element={<Friends />} />
-      </Routes>
+    <div>
+      {token ? (
+        <>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/friends" element={<Friends />} />
+          </Routes>
+        </>
+      ) : (
+        <>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
+        </>
+      )}
     </div>
-  );
+  )
 }
 
 export default App;
