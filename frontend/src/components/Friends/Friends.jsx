@@ -12,6 +12,7 @@ import axios from 'axios';
 
 import { Link, useLocation } from "react-router-dom";
 import { updateFriends } from '../../redux/userSlice';
+import FriendPost from './FriendPost/FriendPost';
 
 function Friends() {
     const location = useLocation();
@@ -258,7 +259,7 @@ function Friends() {
                 </div>
 
                 <div className="right-Friends">
-                    <h1>FriendPost</h1>
+                    <FriendPost post={friendData?.posts} fetchPost={fetchFriend} />
                 </div>
             </div>
 

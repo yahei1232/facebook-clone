@@ -1,0 +1,55 @@
+.FriendComment .comment {
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+}
+
+.FriendComment .comment .img-input {
+    display: flex;
+}
+
+.FriendComment .comment .img-input img {
+    border-radius: 50%;
+    margin-right: 0.3rem;
+}
+
+.FriendComment .comment .img-input input {
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid rgb(203, 203, 203);
+    padding-left: 0.3rem;
+}
+
+.FriendComment .comment .name-desc-img {
+    display: flex;
+    align-items: flex-start;
+}
+
+.FriendComment .comment .name-desc-img img {
+    margin-right: 0.3rem;
+    border-radius: 50%;
+}
+
+.FriendComment .comment .name-desc-img .name-desc {
+    border: 1px solid rgb(221, 221, 221);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    width: 100%;
+    border-radius: 20px;
+    padding: 0.4rem;
+}
+
+.FriendComment .comment .name-desc-img .name-desc .desc {
+    font-size: 17px;
+}
+
+.FriendComment .comment .like-replay-time-num {
+    display: flex;
+    align-items: center;
+    margin-left: 1.8rem;
+}
+
+.FriendComment .comment .like-replay-time-num button {
+    border: none;
+    background-color: white;
+    margin: 0 0.5rem;
+}
