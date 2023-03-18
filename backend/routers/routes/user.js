@@ -6,6 +6,7 @@ const {
     getSuggrest,
     updateUser,
     addFriend,
+    removeFriend,
 } = require("../controllers/user")
 const authentacion = require('../middlewares/authentacion')
 
@@ -14,7 +15,8 @@ router.get("/getMyAndFriendPosts", authentacion, getMyAndFriendPosts)
 router.get("/getUser/:id", getUser)
 router.get("/getSuggrest", authentacion, getSuggrest)
 router.put("/updateUser", authentacion, updateUser)
-router.put("/addFriend/:id", authentacion, addFriend)  //http://localhost:5000/user/addFriend/:id
+router.put("/addFriend/:id", authentacion, addFriend)
+router.put("/removeFriend/:id", authentacion, removeFriend)
 
 module.exports = router
 

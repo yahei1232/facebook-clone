@@ -156,6 +156,40 @@ const addFriend = async (req, res) => {
     }
 };
 
+const removeFriend = async (req, res) => {
+    let userId = req.token.userId;
+    let personId = req.params.id;
+    
+    const { watingaccept } = await userModle.findById(userId);
+    const { panding } = await userModle.findById(personId);
+
+    if (
+        userId !== personId &&
+        watingaccept.includes(personId) === true &&
+        panding.includes(userId) === true
+    ) {
+        try {
+            await userModle.updateOne(
+                { userId },
+                { $pull: { watingaccept: personId } }
+            );
+
+            await userModle.updateOne(
+                { panding },
+                { $pull: { panding: userId } }
+            );
+            res.status(200).json("done");
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    } else {
+        return res.status(404).json({
+            success: false,
+            message: `you cant unfollow yourself`,
+        });
+    }
+};
+
 module.exports = {
     requster,
     getMyAndFriendPosts,
@@ -163,4 +197,5 @@ module.exports = {
     getSuggrest,
     updateUser,
     addFriend,
+    removeFriend,
 };
