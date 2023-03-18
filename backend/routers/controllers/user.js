@@ -133,13 +133,13 @@ const addFriend = async (req, res) => {
         panding.includes(userId) === false
     ) {
         try {
-            const updateWation = await userModle.findByIdAndUpdate(
+            await userModle.findByIdAndUpdate(
                 userId,
                 { watingaccept: personId },
                 { new: true }
             );
 
-            const updatePending = await userModle.findByIdAndUpdate(
+            await userModle.findByIdAndUpdate(
                 personId,
                 { panding: userId },
                 { new: true }
@@ -151,7 +151,7 @@ const addFriend = async (req, res) => {
     } else {
         return res.status(404).json({
             success: false,
-            message: `you cant follow yourself`,
+            message: `you cant add yourself`,
         });
     }
 };
@@ -185,7 +185,7 @@ const removeFriend = async (req, res) => {
     } else {
         return res.status(404).json({
             success: false,
-            message: `you cant unfollow yourself`,
+            message: `you cant remove yourself`,
         });
     }
 };
@@ -233,7 +233,28 @@ const acceptFriend = async (req, res) => {
     } else {
         return res.status(404).json({
             success: false,
-            message: `you cant unfollow yourself`,
+            message: `you cant accept yourself`,
+        });
+    }
+};
+
+const cansleFriend = async (req, res) => {
+    let userId = req.token.userId;
+    let personId = req.params.id;
+
+    if (userId !== personId) {
+        try {
+            await userModle.findByIdAndUpdate(userId, { $pull: { friends: personId } });
+
+            await userModle.findByIdAndUpdate(personId, { $pull: { friends: userId } });
+            res.status(200).json("done");
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    } else {
+        return res.status(404).json({
+            success: false,
+            message: `you cant cansle yourself`,
         });
     }
 };
@@ -247,4 +268,5 @@ module.exports = {
     addFriend,
     removeFriend,
     acceptFriend,
+    cansleFriend,
 };
