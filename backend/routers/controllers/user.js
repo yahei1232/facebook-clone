@@ -295,6 +295,41 @@ const addFollowers = async (req, res) => {
     }
 };
 
+const removeFollowers = async (req, res) => {
+    let userId = req.token.userId;
+    let personId = req.params.id;
+
+    const { followers } = await userModle.findById(userId);
+    const follo = await userModle.findById(personId);
+
+    if (
+        userId !== personId &&
+        followers.includes(personId) === true &&
+        follo.followers.includes(userId) === true
+    ) {
+        try {
+
+            await userModle.findByIdAndUpdate(
+                userId,
+                { $pull: { followers: personId } }
+            );
+
+            await userModle.findByIdAndUpdate(
+                personId,
+                { $pull: { followers: userId } }
+            );
+            res.status(200).json("done");
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    } else {
+        return res.status(404).json({
+            success: false,
+            message: `you cant unfollow yourself`,
+        });
+    }
+};
+
 module.exports = {
     requster,
     getMyAndFriendPosts,
@@ -306,4 +341,5 @@ module.exports = {
     acceptFriend,
     cansleFriend,
     addFollowers,
+    removeFollowers
 };
