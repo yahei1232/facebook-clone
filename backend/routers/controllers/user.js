@@ -16,6 +16,7 @@ const requster = async (req, res) => {
             res.status(500).json(err);
         });
 };
+
 const getMyAndFriendPosts = async (req, res) => {
     let userId = req.token.userId;
     try {
@@ -68,6 +69,7 @@ const getMyAndFriendPosts = async (req, res) => {
         res.status(500).json(error);
     }
 };
+
 const getUser = async (req, res) => {
     try {
         const user = await userModle.findById(req.params.id)
@@ -118,10 +120,47 @@ const updateUser = async (req, res) => {
     }
 };
 
+const addFriend = async (req, res) => {
+    let userId = req.token.userId;
+    let personId = req.params.id;
+
+    const { watingaccept } = await userModle.findById(userId);
+    const { panding } = await userModle.findById(personId);
+
+    if (
+        userId !== personId &&
+        watingaccept.includes(personId) === false &&
+        panding.includes(userId) === false
+    ) {
+        try {
+            const updateWation = await userModle.findByIdAndUpdate(
+                userId,
+                { watingaccept: personId },
+                { new: true }
+            );
+
+            const updatePending = await userModle.findByIdAndUpdate(
+                personId,
+                { panding: userId },
+                { new: true }
+            );
+            res.status(200).json("done");
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    } else {
+        return res.status(404).json({
+            success: false,
+            message: `you cant follow yourself`,
+        });
+    }
+};
+
 module.exports = {
     requster,
     getMyAndFriendPosts,
     getUser,
     getSuggrest,
     updateUser,
+    addFriend,
 };
