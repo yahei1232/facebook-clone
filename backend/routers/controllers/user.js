@@ -159,7 +159,7 @@ const addFriend = async (req, res) => {
 const removeFriend = async (req, res) => {
     let userId = req.token.userId;
     let personId = req.params.id;
-    
+
     const { watingaccept } = await userModle.findById(userId);
     const { panding } = await userModle.findById(personId);
 
@@ -190,6 +190,54 @@ const removeFriend = async (req, res) => {
     }
 };
 
+const acceptFriend = async (req, res) => {
+    let userId = req.token.userId;
+    let personId = req.params.id;
+
+    const { panding } = await userModle.findById(userId);
+    const { watingaccept } = await userModle.findById(personId);
+
+    if (
+        userId !== personId &&
+        watingaccept.includes(userId) === true &&
+        panding.includes(personId) === true
+    ) {
+        try {
+            await userModle.findByIdAndUpdate(
+                userId,
+                { $pull: { panding: personId } }
+            );
+
+            await userModle.findByIdAndUpdate(
+                panding,
+                { $pull: { watingaccept: userId } }
+            );
+
+            const nnn = await userModle.findByIdAndUpdate(
+                userId,
+                { friends: personId },
+                { new: true }
+            );
+
+            await userModle.findByIdAndUpdate(
+                personId,
+                { friends: userId },
+                { new: true }
+            );
+
+
+            res.status(200).json(nnn);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    } else {
+        return res.status(404).json({
+            success: false,
+            message: `you cant unfollow yourself`,
+        });
+    }
+};
+
 module.exports = {
     requster,
     getMyAndFriendPosts,
@@ -198,4 +246,5 @@ module.exports = {
     updateUser,
     addFriend,
     removeFriend,
+    acceptFriend,
 };
