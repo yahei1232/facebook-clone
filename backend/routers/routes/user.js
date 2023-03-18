@@ -9,6 +9,7 @@ const {
     removeFriend,
     acceptFriend,
     cansleFriend,
+    addFollowers,
 } = require("../controllers/user")
 const authentacion = require('../middlewares/authentacion')
 
@@ -21,6 +22,7 @@ router.put("/addFriend/:id", authentacion, addFriend)
 router.put("/removeFriend/:id", authentacion, removeFriend)
 router.put("/acceptFriend/:id", authentacion, acceptFriend)
 router.put("/cansleFriend/:id", authentacion, cansleFriend)
+router.put("/addFollowers/:id", authentacion, addFollowers)
 
 module.exports = router
 

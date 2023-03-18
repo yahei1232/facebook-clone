@@ -259,6 +259,42 @@ const cansleFriend = async (req, res) => {
     }
 };
 
+const addFollowers = async (req, res) => {
+    let userId = req.token.userId;
+    let personId = req.params.id;
+
+    const { followers } = await userModle.findById(userId);
+    const follo = await userModle.findById(personId);
+
+    if (
+        userId !== personId &&
+        followers.includes(personId) === false &&
+        follo.followers.includes(userId) === false
+    ) {
+        try {
+            await userModle.findByIdAndUpdate(
+                userId,
+                { followers: personId },
+                { new: true }
+            );
+
+            await userModle.findByIdAndUpdate(
+                personId,
+                { followers: userId },
+                { new: true }
+            );
+            res.status(200).json("done");
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    } else {
+        return res.status(404).json({
+            success: false,
+            message: `you cant follow yourself`,
+        });
+    }
+};
+
 module.exports = {
     requster,
     getMyAndFriendPosts,
@@ -269,4 +305,5 @@ module.exports = {
     removeFriend,
     acceptFriend,
     cansleFriend,
+    addFollowers,
 };
