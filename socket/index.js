@@ -22,6 +22,18 @@ io.on("connection", (socket) => {
         io.emit("getUsers", users);
     });
 
+    //send and get message
+    socket.on("sendMessage", ({ senderId, receiverId, text }) => {
+        const user = getUser(receiverId);
+        console.log(user);
+        if (user) {
+            io.to(user.socketId).emit("getMessage", {
+                senderId,
+                text,
+            });
+        }
+    });
+
     //when disconnect
     socket.on("disconnect", () => {
         console.log("a user disconnected!");
