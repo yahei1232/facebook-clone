@@ -7,6 +7,7 @@ import Home from './components/Home/Home';
 import Profile from './components/Profile/Profile';
 import Friends from './components/Friends/Friends';
 import { useSelector } from 'react-redux';
+import Messenger from './components/messenger/Messenger';
 
 function App() {
   let token = (useSelector((state) => state?.user?.currentUser?.token));
@@ -20,6 +21,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/friends" element={<Friends />} />
+            <Route path="/messenger" element={<Messenger />} />
           </Routes>
         </>
       ) : (
